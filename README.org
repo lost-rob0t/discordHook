@@ -11,7 +11,7 @@ Here is an example creating a webook
 #+begin_src nim
 import discordhook
 # Create the webhook
-let hook = Webhook(content: "Hello world!")
+let hook = Webhook(content: "Hello world!", url: "webhook url")
 # Send it
 hook.send()
 #+end_src
