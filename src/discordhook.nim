@@ -29,11 +29,14 @@ type
 
 
 proc send*(hc: HttpClient or AsyncHttpClient, hook: Webhook): Future[string] {.multisync.} =
-  ## make sure to set your http headers!
+  ## Async and sync function to post the webhook to the discord hook
+  ## make sure to set your http headers! Discord requires the content type
+  ## let hc = newHttpClient(headers=newHttpHeaders({ "Content-Type": "application/json" }))
   result = await  (await hc.post(hook.url, body=hook.toJson)).body
 
 
 proc send*(hook: Webhook): string =
+  ## Simple Sync function that creates the http client for you.
   let hc = newHttpClient(headers=newHttpHeaders({ "Content-Type": "application/json" }))
   result = hc.post(hook.url, body=hook.toJson).body
 

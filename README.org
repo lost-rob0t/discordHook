@@ -3,3 +3,15 @@
 
 * Discord Hooks
 This is a simple library for sending webhooks to a discord server.
+
+
+** usage
+Here is an example creating a webook
+
+#+begin_src nim
+import discordhook
+# Create the webhook
+let hook = Webhook(content: "Hello world!")
+# Send it
+hook.send()
+#+end_src
